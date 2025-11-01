@@ -8,8 +8,25 @@ const Tour = require('./../models/tourModel');
 /// Route Handlers
 
 exports.getAllTours = async (req, res) => {
-  const tours = await Tour.find();
+  const queryObj = { ...req.query };
+  console.log(queryObj);
+  const excludedObj = ['page', 'limit', 'sort', 'fields'];
 
+  excludedObj.forEach((el) => delete queryObj[el]);
+  console.log(queryObj);
+
+  // Building Queries
+  const query = Tour.find(queryObj);
+  // const tours = await Tour.find()
+  //   .where('duration')
+  //   .equals(5)
+  //   .where('difficulty')
+  //   .equals('easy');
+
+  //Executing Queries
+  const tours = await query;
+
+  // Responding to Queries
   res.status(200).json({
     status: 'success',
     result: tours.length,
