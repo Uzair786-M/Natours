@@ -18,27 +18,42 @@ exports.getAllTours = async (req, res) => {
 
   queryStr = queryStr.replace(/\b(gte|lte|gt|lt)\b/g, (match) => `$${match}`);
   queryObj = JSON.parse(queryStr);
-  console.log(queryObj);
+  // console.log(queryObj);
+
+  // ignoring some querys
   const excludedObj = ['page', 'limit', 'sort', 'fields'];
 
   excludedObj.forEach((el) => delete queryObj[el]);
-  console.log(queryObj);
-
-  // ignoring some querys
-  // const queryObj = { ...req.query };
-  // console.log(queryObj);
-  // const excludedObj = ['page', 'limit', 'sort', 'fields'];
-
-  // excludedObj.forEach((el) => delete queryObj[el]);
   // console.log(queryObj);
 
   // Building Queries
-  const query = Tour.find(queryObj);
+
+  // console.log(sortedQuery);
+  console.log(queryObj);
+  let query = Tour.find(queryObj);
   // const tours = await Tour.find()
   //   .where('duration')
   //   .equals(5)
   //   .where('difficulty')
   //   .equals('easy');
+
+  // Sorting
+  if (req.query.sort) {
+    const sortBy = req.query.sort.split(',').join(' ');
+    query = query.sort(sortBy);
+  } else {
+    query = query.sort('-createdAt');
+  }
+
+  // Field limit OR Projection
+
+  if (req.query.fields) {
+    const projectionBy = req.query.fields.split(',').join(' ');
+
+    query = query.select(projectionBy);
+  } else {
+    query = query.select('-__v');
+  }
 
   //Executing Queries
   const tours = await query;
