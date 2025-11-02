@@ -8,12 +8,29 @@ const Tour = require('./../models/tourModel');
 /// Route Handlers
 
 exports.getAllTours = async (req, res) => {
-  const queryObj = { ...req.query };
+  // Advance filtering e.g {gte,gt,lte,le}
+  // In native mongoDB we achieve this by another object inside object and by using special operator "$" like object.find({difficulty:"easy",duration :{$gte:5}})
+  // query object comes from client side looks like { duration: { gt: '5' }, difficulty: 'easy' }
+  // The challange is here how to get this "$" operator because it does not comes with query object.Solution to this problem is below here.
+
+  let queryObj = { ...req.query };
+  let queryStr = JSON.stringify(queryObj);
+
+  queryStr = queryStr.replace(/\b(gte|lte|gt|lt)\b/g, (match) => `$${match}`);
+  queryObj = JSON.parse(queryStr);
   console.log(queryObj);
   const excludedObj = ['page', 'limit', 'sort', 'fields'];
 
   excludedObj.forEach((el) => delete queryObj[el]);
   console.log(queryObj);
+
+  // ignoring some querys
+  // const queryObj = { ...req.query };
+  // console.log(queryObj);
+  // const excludedObj = ['page', 'limit', 'sort', 'fields'];
+
+  // excludedObj.forEach((el) => delete queryObj[el]);
+  // console.log(queryObj);
 
   // Building Queries
   const query = Tour.find(queryObj);
