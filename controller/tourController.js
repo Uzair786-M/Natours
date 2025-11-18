@@ -1,4 +1,5 @@
 const Tour = require('./../models/tourModel');
+const APIFeatures = require('./../Utils/apiFeatures');
 // const fs = require('fs');
 
 // const tours = JSON.parse(
@@ -8,55 +9,14 @@ const Tour = require('./../models/tourModel');
 /// Route Handlers
 
 exports.getAllTours = async (req, res) => {
-  // Advance filtering e.g {gte,gt,lte,le}
-  // In native mongoDB we achieve this by another object inside object and by using special operator "$" like object.find({difficulty:"easy",duration :{$gte:5}})
-  // query object comes from client side looks like { duration: { gt: '5' }, difficulty: 'easy' }
-  // The challange is here how to get this "$" operator because it does not comes with query object.Solution to this problem is below here.
-
-  let queryObj = { ...req.query };
-  let queryStr = JSON.stringify(queryObj);
-
-  queryStr = queryStr.replace(/\b(gte|lte|gt|lt)\b/g, (match) => `$${match}`);
-  queryObj = JSON.parse(queryStr);
-  // console.log(queryObj);
-
-  // ignoring some querys
-  const excludedObj = ['page', 'limit', 'sort', 'fields'];
-
-  excludedObj.forEach((el) => delete queryObj[el]);
-  // console.log(queryObj);
-
-  // Building Queries
-
-  // console.log(sortedQuery);
-  console.log(queryObj);
-  let query = Tour.find(queryObj);
-  // const tours = await Tour.find()
-  //   .where('duration')
-  //   .equals(5)
-  //   .where('difficulty')
-  //   .equals('easy');
-
-  // Sorting
-  if (req.query.sort) {
-    const sortBy = req.query.sort.split(',').join(' ');
-    query = query.sort(sortBy);
-  } else {
-    query = query.sort('-createdAt');
-  }
-
-  // Field limit OR Projection
-
-  if (req.query.fields) {
-    const projectionBy = req.query.fields.split(',').join(' ');
-
-    query = query.select(projectionBy);
-  } else {
-    query = query.select('-__v');
-  }
+  let features = new APIFeatures(Tour.find(), req.query)
+    .filter()
+    .sorting()
+    .fieldLimiting()
+    .paginate();
 
   //Executing Queries
-  const tours = await query;
+  const tours = await features.query;
 
   // Responding to Queries
   res.status(200).json({
