@@ -48,6 +48,10 @@ const tourSchema = new mongoose.Schema(
       select: false,
     },
     startDates: [String],
+    secerateData: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     toJSON: { virtuals: true },
@@ -70,5 +74,12 @@ tourSchema.pre('save', function (next) {
 // tourSchema.post('save', function (doc, next) {
 //   console.log(doc);
 // });
+
+// Query Middleware
+
+tourSchema.pre('find', function (next) {
+  this.find({ secerateData: { $ne: true } });
+  next();
+});
 
 module.exports = Tour = mongoose.model('Tour', tourSchema);
