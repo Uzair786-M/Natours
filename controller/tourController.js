@@ -77,3 +77,72 @@ exports.deleteTour = async (req, res) => {
     status: 'success',
   });
 };
+
+exports.tourStats = async (req, res) => {
+  try {
+    const stats = await Tour.aggregate([
+      { $match: { price: { $gte: 100 } } },
+      {
+        $group: {
+          _id: '$difficulty',
+          totalNum: { $sum: 1 },
+          avgRating: { $avg: '$ratingsAverage' },
+          avgPrice: { $avg: '$price' },
+          minPrice: { $min: '$price' },
+          maxPrice: { $max: '$price' },
+        },
+      },
+    ]);
+
+    res.status(200).json({
+      status: 'success',
+      data: stats,
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: 'Data not found',
+    });
+  }
+};
+
+exports.toursSoldPerMonth = async (req, res) => {
+  try {
+    const year = req.params.year * 1;
+    const toursByMonth = await Tour.aggregate([
+      {
+        $unwind: '$startDates',
+      },
+
+      {
+        $match: {
+          startDates: {
+            $gte: `${new Date(`${year}-01-01`).toISOString()}`,
+            $lte: `${new Date(`${year}-12-31`).toISOString()}`,
+          },
+        },
+      },
+
+      {
+        $group: {
+          _id: { $month: { $toDate: '$startDates' } },
+          totalTourNum: { $sum: 1 },
+          tourName: { $push: '$name' },
+        },
+      },
+      { $addFields: { month: '$_id' } },
+      { $project: { _id: 0 } },
+      { $sort: { totalTourNum: -1 } },
+      { $limit: 6 },
+    ]);
+    res.status(200).json({
+      status: 'success',
+      data: toursByMonth,
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: 'Data not found',
+    });
+  }
+};
