@@ -6,6 +6,12 @@ const tourSchema = new mongoose.Schema(
       type: String,
       unique: true,
       required: [true, 'Tour must contain a name'],
+      trim: true,
+      minlength: [10, 'Tour name must have minimum 10 charaters'],
+      maxlength: [
+        40,
+        'Tour name must have below than or equal to 40 characters',
+      ],
     },
     slug: String,
     duration: {
@@ -19,10 +25,16 @@ const tourSchema = new mongoose.Schema(
     difficulty: {
       type: String,
       required: [true, 'Tour must contain difficulty'],
+      enum: {
+        values: ['easy', 'medium', 'difficult'],
+        message: `Tour should only be easy,medium and difficult,{VALUE} is not allowed`,
+      },
     },
     ratingsAverage: {
       type: Number,
       default: 4.5,
+      min: [1, 'Tour rating must be more or equal to 1'],
+      max: [5, 'Tour rating must be less or equal to 5'],
     },
     ratingsQuantity: {
       type: Number,
@@ -86,7 +98,7 @@ tourSchema.pre('find', function (next) {
 
 tourSchema.pre('aggregate', function () {
   this.pipeline().unshift({ $match: { difficulty: 'easy' } });
-  console.log(this.pipeline());
+  // console.log(this.pipeline());
 });
 
 module.exports = Tour = mongoose.model('Tour', tourSchema);
