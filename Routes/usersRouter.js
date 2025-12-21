@@ -9,7 +9,8 @@ const {
 const express = require('express');
 
 const router = express.Router();
-router.route('/').get(getAllUsers).post(createUsers);
+router.route('/').get(getAllUsers);
+router.route('/Signup').post(createUsers);
 
 router.route('/:id').get(getUser).patch(updateUser).delete(deleteUser);
 
