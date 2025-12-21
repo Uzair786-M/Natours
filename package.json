@@ -12,6 +12,7 @@
   "author": "Uzair Maqbool",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^3.0.3",
     "dotenv": "^17.2.3",
     "express": "^4.21.2",
     "mongoose": "^8.19.2",

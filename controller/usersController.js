@@ -4,7 +4,7 @@ const asyncCatch = (fn) => {
   return (req, res, next) => {
     fn(req, res, next).catch((err) => next(err));
   };
-}
+};
 
 exports.getAllUsers = (req, res) => {
   res.status(500).json({
@@ -15,11 +15,11 @@ exports.getAllUsers = (req, res) => {
 
 exports.createUsers = asyncCatch(async (req, res) => {
   const newUser = await User.create({
-    name:req.body.name,
-    email:req.body.email,
-    pasword:req.body.pasword,
-    paswordConfirm:req.body.paswordConfirm
-  })
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password,
+    passwordConfirm: req.body.passwordConfirm,
+  });
   res.status(201).json({
     status: 'success',
     data: newUser,
