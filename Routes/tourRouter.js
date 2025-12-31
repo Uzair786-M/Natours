@@ -8,19 +8,20 @@ const {
   tourStats,
   toursSoldPerMonth,
 } = require('./../controller/tourController');
+const { protect } = require('./../controller/AuthController');
 
 const express = require('express');
 
 const router = express.Router();
 
+router.route('/').get(protect, getAllTours).post(createTour);
+
 router.route('/stats').get(tourStats);
 router.route('/toursSoldPermonth/:year').get(toursSoldPerMonth);
 
-router.route('/').get(getAllTours).post(createTour);
-
 router
   .route('/:id')
-  .get(getTour)
+  .get(protect, getTour)
 
   .patch(updateTour)
 
