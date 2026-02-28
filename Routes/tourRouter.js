@@ -8,7 +8,7 @@ const {
   tourStats,
   toursSoldPerMonth,
 } = require('./../controller/tourController');
-const { protect } = require('./../controller/AuthController');
+const { protect, restrictTo } = require('./../controller/AuthController');
 
 const express = require('express');
 
@@ -25,6 +25,6 @@ router
 
   .patch(updateTour)
 
-  .delete(deleteTour);
+  .delete(protect, restrictTo('admin', 'lead-guide'), deleteTour);
 
 module.exports = router;
