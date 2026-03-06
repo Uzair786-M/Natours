@@ -16,7 +16,6 @@ const asyncCatch = (fn) => {
 };
 
 exports.getAllTours = asyncCatch(async (req, res) => {
-  console.log(req);
   let features = new APIFeatures(Tour.find(), req.query)
     .filter()
     .sorting()
