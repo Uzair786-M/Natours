@@ -43,6 +43,16 @@ const userSchema = new mongoose.Schema({
   passwordChangedAt: Date,
   resetToken: String,
   expiresResetToken: Date,
+  active: {
+    type: Boolean,
+    default: true,
+    select: false,
+  },
+});
+
+userSchema.pre('find', function (next) {
+  this.find({ active: true });
+  next();
 });
 
 userSchema.pre('save', async function (next) {
@@ -72,7 +82,7 @@ userSchema.pre('save', async function (next) {
 userSchema.methods.changedPasswordAfter = function (JWTTimeStamp) {
   if (this.passwordChangedAt) {
     const changedTimeStamp = parseInt(
-      this.passwordChanged.getTime() / 1000,
+      this.passwordChangedAt.getTime() / 1000,
       10,
     );
 
