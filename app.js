@@ -15,7 +15,7 @@ app.use(express.json());
 
 // rate limit middleware (limit request from one IP to protect again guessing password or emails attack)
 const rateLimitObject = {
-  max: 3,
+  max: 100,
   windowMs: 60 * 60 * 1000,
   message: 'To many request from this IP,try again later!',
 };
