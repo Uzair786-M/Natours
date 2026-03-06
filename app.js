@@ -5,12 +5,22 @@ const morgan = require('morgan');
 console.log(process.env.NODE_ENV === 'development');
 const APIErrors = require('./Utils/apiErrors');
 const globalError = require('./controller/errorController');
+const rateLimit = require('express-rate-limit');
 const app = express();
 
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 app.use(express.json());
+
+// rate limit middleware (limit request from one IP to protect again guessing password or emails attack)
+const rateLimitObject = {
+  max: 3,
+  windowMs: 60 * 60 * 1000,
+  message: 'To many request from this IP,try again later!',
+};
+
+app.use(rateLimit(rateLimitObject));
 
 // Serving static files
 
