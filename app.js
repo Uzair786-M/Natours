@@ -7,6 +7,8 @@ const APIErrors = require('./Utils/apiErrors');
 const globalError = require('./controller/errorController');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
+const NoSQLQueryInjectionAttack = require('express-mongo-sanitize');
+const XSS = require('xss-clean');
 
 const app = express();
 
@@ -19,6 +21,14 @@ if (process.env.NODE_ENV === 'development') {
 
 // body parser middleware,read document from body into req.body
 app.use(express.json({ limit: '10kb' }));
+
+// Data sanitization middleware to prevent NoSQL query injection attack
+
+app.use(NoSQLQueryInjectionAttack());
+
+// Data Sanitizaion agains cross site scripting (XSS).
+
+app.use(XSS());
 
 // rate limit middleware (limit request from one IP to protect again guessing password or emails attack)
 const rateLimitObject = {
