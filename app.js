@@ -6,12 +6,19 @@ console.log(process.env.NODE_ENV === 'development');
 const APIErrors = require('./Utils/apiErrors');
 const globalError = require('./controller/errorController');
 const rateLimit = require('express-rate-limit');
+const helmet = require('helmet');
+
 const app = express();
 
+// set HTTP security headers
+app.use(helmet());
+// Development logging middleware
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
-app.use(express.json());
+
+// body parser middleware,read document from body into req.body
+app.use(express.json({ limit: '10kb' }));
 
 // rate limit middleware (limit request from one IP to protect again guessing password or emails attack)
 const rateLimitObject = {
