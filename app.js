@@ -9,6 +9,7 @@ const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const NoSQLQueryInjectionAttack = require('express-mongo-sanitize');
 const XSS = require('xss-clean');
+const hpp = require('hpp');
 
 const app = express();
 
@@ -38,6 +39,20 @@ const rateLimitObject = {
 };
 
 app.use(rateLimit(rateLimitObject));
+
+// Preventing Parameter Pollution
+
+app.use(
+  hpp({
+    whitelist: [
+      'duration',
+      'maxGroupSize',
+      'ratingsAverage',
+      'ratingsQuantity',
+      'price',
+    ],
+  }),
+);
 
 // Serving static files
 
