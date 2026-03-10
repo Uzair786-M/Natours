@@ -13,6 +13,29 @@ const tourSchema = new mongoose.Schema(
         'Tour name must have below than or equal to 40 characters',
       ],
     },
+    startLocation: {
+      type: {
+        type: String,
+        default: 'Point',
+        enum: ['Point'],
+      },
+      coordinates: [Number],
+      address: String,
+      description: String,
+    },
+    locations: [
+      {
+        type: {
+          type: String,
+          default: 'Point',
+          enum: ['Point'],
+        },
+        day: Number,
+        coordinates: [Number],
+        description: String,
+        address: String,
+      },
+    ],
     slug: String,
     duration: {
       type: Number,
@@ -68,7 +91,7 @@ const tourSchema = new mongoose.Schema(
   {
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
-  }
+  },
 );
 
 tourSchema.virtual('durationInWeeks').get(function () {

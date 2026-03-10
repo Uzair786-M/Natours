@@ -5,7 +5,7 @@ const fs = require('fs');
 const Tour = require('./../../models/tourModel');
 const db = process.env.REMOTE_DATABASE.replace(
   '<PASSWORD>',
-  process.env.PASSWORD
+  process.env.PASSWORD,
 );
 
 mongoose
@@ -13,9 +13,7 @@ mongoose
   .then(() => console.log('connection with database is sucessful'))
   .catch((err) => console.log('Oh Error', err));
 
-const tours = JSON.parse(
-  fs.readFileSync(`${__dirname}/tours-simple.json`, 'utf-8')
-);
+const tours = JSON.parse(fs.readFileSync(`${__dirname}/tours.json`, 'utf-8'));
 
 const importTours = async () => {
   try {

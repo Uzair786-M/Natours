@@ -2,7 +2,7 @@ const express = require('express');
 const tourRouter = require('./Routes/tourRouter');
 const usersRouter = require('./Routes/usersRouter');
 const morgan = require('morgan');
-console.log(process.env.NODE_ENV === 'development');
+// console.log(process.env.NODE_ENV === 'development');
 const APIErrors = require('./Utils/apiErrors');
 const globalError = require('./controller/errorController');
 const rateLimit = require('express-rate-limit');
