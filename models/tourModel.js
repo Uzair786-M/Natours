@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const slugify = require('slugify');
+// const User = require('./userModel');
 const tourSchema = new mongoose.Schema(
   {
     name: {
@@ -87,6 +88,12 @@ const tourSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    guides: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+      },
+    ],
   },
   {
     toJSON: { virtuals: true },
@@ -112,7 +119,7 @@ tourSchema.pre('save', function (next) {
 
 // Query Middleware
 
-tourSchema.pre('find', function (next) {
+tourSchema.pre('/^find/', function (next) {
   this.find({ secerateData: { $ne: true } });
   next();
 });
@@ -123,5 +130,12 @@ tourSchema.pre('aggregate', function () {
   this.pipeline().unshift({ $match: { difficulty: 'easy' } });
   // console.log(this.pipeline());
 });
+
+// tourSchema.pre('save', async function (next) {
+//   const guides = this.guides.map(async (el) => await User.findById(el));
+//   this.guides = await Promise.all(guides);
+
+//   next();
+// });
 
 module.exports = Tour = mongoose.model('Tour', tourSchema);

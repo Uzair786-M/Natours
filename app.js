@@ -1,6 +1,7 @@
 const express = require('express');
 const tourRouter = require('./Routes/tourRouter');
 const usersRouter = require('./Routes/usersRouter');
+const reviewsRouter = require('./Routes/reviewRouter');
 const morgan = require('morgan');
 // console.log(process.env.NODE_ENV === 'development');
 const APIErrors = require('./Utils/apiErrors');
@@ -73,6 +74,10 @@ app.use('/api/v1/tours', tourRouter);
 // User Routes
 
 app.use('/api/v1/users', usersRouter);
+
+// Review Routes
+
+app.use('/api/v1/reviews', reviewsRouter);
 
 app.all('*', (req, res, next) => {
   next(new APIErrors(`Can't find ${req.originalUrl} in this server`, 404));

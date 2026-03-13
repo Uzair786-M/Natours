@@ -41,6 +41,7 @@ exports.createUsers = asyncCatch(async (req, res, next) => {
     password: req.body.password,
     passwordConfirm: req.body.passwordConfirm,
     role: req.body.role,
+    reviews: req.body.reviews,
   });
 
   createSendToken(newUser, 201, res);
