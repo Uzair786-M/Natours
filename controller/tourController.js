@@ -1,6 +1,7 @@
 const Tour = require('./../models/tourModel');
 const APIFeatures = require('./../Utils/apiFeatures');
 const APIErrors = require('./../Utils/apiErrors');
+
 // const fs = require('fs');
 
 // const tours = JSON.parse(
@@ -37,7 +38,7 @@ exports.getAllTours = asyncCatch(async (req, res) => {
 });
 
 exports.getTour = asyncCatch(async (req, res) => {
-  const tour = await Tour.findOne({ _id: req.params.id });
+  const tour = await Tour.findOne({ _id: req.params.id }).populate('reviews');
 
   res.status(200).json({
     status: 'success',

@@ -138,4 +138,12 @@ tourSchema.pre('aggregate', function () {
 //   next();
 // });
 
+// Virtual Populate
+
+tourSchema.virtual('reviews', {
+  ref: 'Review',
+  foreignField: 'tour',
+  localField: '_id',
+});
+
 module.exports = Tour = mongoose.model('Tour', tourSchema);

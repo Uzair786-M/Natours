@@ -28,10 +28,14 @@ const reviewSchmea = new mongoose.Schema(
 );
 
 reviewSchmea.pre(/^find/, function (next) {
+  // this.populate({
+  //   path: 'tour',
+  //   select: 'name',
+  // }).populate({
+  //   path: 'users',
+  //   select: 'name photo',
+  // });
   this.populate({
-    path: 'tour',
-    select: 'name',
-  }).populate({
     path: 'users',
     select: 'name photo',
   });
