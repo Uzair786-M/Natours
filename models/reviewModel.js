@@ -13,13 +13,11 @@ const reviewSchmea = new mongoose.Schema(
       type: Date,
       default: Date.now(),
     },
-    tour: [{ type: mongoose.Schema.ObjectId, ref: 'Tour' }],
-    users: [
-      {
-        type: mongoose.Schema.ObjectId,
-        ref: 'User',
-      },
-    ],
+    tour: { type: mongoose.Schema.ObjectId, ref: 'Tour' },
+    users: {
+      type: mongoose.Schema.ObjectId,
+      ref: 'User',
+    },
   },
   {
     toJSON: { virtuals: true },

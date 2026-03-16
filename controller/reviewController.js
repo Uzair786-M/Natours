@@ -7,6 +7,9 @@ const asyncCatch = (fn) => {
 };
 
 exports.createReviews = asyncCatch(async (req, res) => {
+  // Allow nested Routes
+  if (!req.body.tour) req.body.tour = req.params.tourId;
+  if (!req.body.user) req.body.user = req.user.id;
   const review = new Review(req.body);
   const result = await review.save();
   res.status(200).json({
