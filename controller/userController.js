@@ -1,4 +1,5 @@
 const User = require('../models/userModel');
+const { deleteOne } = require('./handleFactory');
 
 const asyncCatch = (fn) => {
   return (req, res, next) => {
@@ -45,7 +46,7 @@ exports.updateUser = asyncCatch(async (req, res, next) => {
   });
 });
 
-exports.deleteUser = asyncCatch(async (req, res) => {
+exports.deleteUserByItself = asyncCatch(async (req, res) => {
   const user = await User.findByIdAndUpdate(req.user.id, { active: false });
   console.log(user);
   res.status(204).json({
@@ -53,3 +54,5 @@ exports.deleteUser = asyncCatch(async (req, res) => {
     data: null,
   });
 });
+
+exports.deleteUserByAdmin = deleteOne(User);

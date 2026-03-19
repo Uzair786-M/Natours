@@ -1,4 +1,5 @@
 const Review = require('../models/reviewModel');
+const { deleteOne } = require('./handleFactory');
 
 const asyncCatch = (fn) => {
   return (req, res, next) => {
@@ -22,11 +23,16 @@ exports.createReviews = asyncCatch(async (req, res) => {
 });
 
 exports.getReviews = asyncCatch(async (req, res) => {
-  const reviews = await Review.findOne({ _id: req.params.id });
+  let filter = {};
+  if (req.params.tourId) filter = { tour: req.params.tourId };
+  const reviews = await Review.find(filter);
 
   res.status(200).json({
     status: 'success',
+    result: reviews.length,
 
     reviews,
   });
 });
+
+exports.deleteReview = deleteOne(Review);

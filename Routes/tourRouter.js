@@ -9,7 +9,8 @@ const {
   toursSoldPerMonth,
 } = require('./../controller/tourController');
 const { protect, restrictTo } = require('./../controller/AuthController');
-const { createReviews } = require('./../controller/reviewController');
+
+const reviewRouter = require('./reviewRouter');
 
 const express = require('express');
 
@@ -21,10 +22,12 @@ const router = express.Router();
 // OR
 // POST tour/tourId/review/reviewId
 
+// router
+//   .route('/:tourId/reviews')
+//   .post(protect, restrictTo('user'), createReviews);
+
+router.use('/:tourId/reviews', reviewRouter);
 router.route('/').get(protect, getAllTours).post(createTour);
-router
-  .route('/:tourId/reviews')
-  .post(protect, restrictTo('user'), createReviews);
 
 router.route('/stats').get(tourStats);
 router.route('/toursSoldPermonth/:year').get(toursSoldPerMonth);

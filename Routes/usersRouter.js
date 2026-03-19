@@ -9,7 +9,8 @@ const {
   getAllUsers,
   getUser,
   updateUser,
-  deleteUser,
+  deleteUserByItself,
+  deleteUserByAdmin,
 } = require('./../controller/userController');
 const { login } = require('../controller/loginController');
 console.log(getAllUsers);
@@ -25,6 +26,7 @@ router.route('/Login').post(login);
 router.route('/forgotPassword').post(forgotPassword);
 router.route('/resetPassword/:token').patch(resetPassword);
 router.route('/updateMyPassword').patch(protect, updateMyPassword);
-router.route('/deleteMe').patch(protect, deleteUser);
+router.route('/deleteMe').patch(protect, deleteUserByItself);
+router.route('/deleteByAdmin/:id').delete(deleteUserByAdmin);
 
 module.exports = router;
