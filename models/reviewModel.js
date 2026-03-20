@@ -14,7 +14,7 @@ const reviewSchmea = new mongoose.Schema(
       default: Date.now(),
     },
     tour: { type: mongoose.Schema.ObjectId, ref: 'Tour' },
-    users: {
+    user: {
       type: mongoose.Schema.ObjectId,
       ref: 'User',
     },
@@ -34,7 +34,7 @@ reviewSchmea.pre(/^find/, function (next) {
   //   select: 'name photo',
   // });
   this.populate({
-    path: 'users',
+    path: 'user',
     select: 'name photo',
   });
   next();

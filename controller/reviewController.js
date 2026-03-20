@@ -1,5 +1,5 @@
 const Review = require('../models/reviewModel');
-const { deleteOne } = require('./handleFactory');
+const { deleteOne, updateOne, createOne } = require('./handleFactory');
 
 const asyncCatch = (fn) => {
   return (req, res, next) => {
@@ -7,20 +7,15 @@ const asyncCatch = (fn) => {
   };
 };
 
-exports.createReviews = asyncCatch(async (req, res) => {
+exports.tourIdParamsMiddleware = (req, res, next) => {
   // Allow nested Routes
   if (!req.body.tour) req.body.tour = req.params.tourId;
   if (!req.body.user) req.body.user = req.user.id;
-  const review = new Review(req.body);
-  const result = await review.save();
-  res.status(200).json({
-    status: 'success',
 
-    data: {
-      review: result,
-    },
-  });
-});
+  next();
+};
+
+exports.createReviews = createOne(Review);
 
 exports.getReviews = asyncCatch(async (req, res) => {
   let filter = {};
@@ -36,3 +31,4 @@ exports.getReviews = asyncCatch(async (req, res) => {
 });
 
 exports.deleteReview = deleteOne(Review);
+exports.updateReview = updateOne(Review);

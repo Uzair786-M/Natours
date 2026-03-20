@@ -1,7 +1,7 @@
 const Tour = require('./../models/tourModel');
 const APIFeatures = require('./../Utils/apiFeatures');
 const APIErrors = require('./../Utils/apiErrors');
-const { deleteOne } = require('./handleFactory');
+const { createOne, updateOne, deleteOne } = require('./handleFactory');
 
 // const fs = require('fs');
 
@@ -50,28 +50,9 @@ exports.getTour = asyncCatch(async (req, res) => {
   });
 });
 
-exports.createTour = asyncCatch(async (req, res, next) => {
-  const tour = new Tour(req.body);
-  const result = await tour.save();
-  res.status(201).json({
-    status: 'success',
-    data: {
-      tour: result,
-    },
-  });
-});
+exports.createTour = createOne(Tour);
 
-exports.updateTour = asyncCatch(async (req, res) => {
-  await Tour.findByIdAndUpdate(req.params.id, req.body, {
-    runValidators: true,
-  });
-  res.status(200).json({
-    status: 'success',
-    data: {
-      updatedTour: await Tour.findById(req.params.id),
-    },
-  });
-});
+exports.updateTour = updateOne(Tour);
 
 // exports.deleteTour = asyncCatch(async (req, res) => {
 //   await Tour.findByIdAndDelete(req.params.id);

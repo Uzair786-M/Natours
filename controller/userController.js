@@ -1,5 +1,5 @@
 const User = require('../models/userModel');
-const { deleteOne } = require('./handleFactory');
+const { deleteOne, updateOne } = require('./handleFactory');
 
 const asyncCatch = (fn) => {
   return (req, res, next) => {
@@ -32,9 +32,12 @@ exports.getAllUsers = asyncCatch(async (req, res, next) => {
 //     });
 //   }));
 
-exports.updateUser = asyncCatch(async (req, res, next) => {
-  const filteredBody = filteredObject(req.body, 'name', 'email');
+exports.filteredBody = (req, res, next) => {
+  filteredObject(req.body, 'name', 'email');
+  next();
+};
 
+exports.updateUser = asyncCatch(async (req, res, next) => {
   const user = await User.findByIdAndUpdate(req.user.id, filteredBody, {
     runValidators: true,
     new: true,
@@ -54,5 +57,5 @@ exports.deleteUserByItself = asyncCatch(async (req, res) => {
     data: null,
   });
 });
-
+exports.updateUser = updateOne(User);
 exports.deleteUserByAdmin = deleteOne(User);
