@@ -27,17 +27,21 @@ const router = express.Router();
 //   .post(protect, restrictTo('user'), createReviews);
 
 router.use('/:tourId/reviews', reviewRouter);
-router.route('/').get(protect, getAllTours).post(createTour);
 
 router.route('/stats').get(tourStats);
-router.route('/toursSoldPermonth/:year').get(toursSoldPerMonth);
+router
+  .route('/toursSoldPermonth/:year')
+  .get(protect, restrictTo('admin', 'lead-guide', 'guide'), toursSoldPerMonth);
+
+router
+  .route('/')
+  .get(getAllTours)
+  .post(protect, restrictTo('admin', 'lead-guide'), createTour);
 
 router
   .route('/:id')
-  .get(protect, getTour)
-
-  .patch(updateTour)
-
+  .get(getTour)
+  .patch(protect, restrictTo('admin', 'lead-guide'), updateTour)
   .delete(protect, restrictTo('admin', 'lead-guide'), deleteTour);
 
 module.exports = router;

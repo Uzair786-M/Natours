@@ -1,5 +1,6 @@
 const User = require('../models/userModel');
-const { deleteOne, updateOne } = require('./handleFactory');
+const APIErrors = require('../Utils/apiErrors');
+const { getAll, getOne, deleteOne, updateOne } = require('./handleFactory');
 
 const asyncCatch = (fn) => {
   return (req, res, next) => {
@@ -16,28 +17,27 @@ const filteredObject = (obj, ...allowedFields) => {
   });
   return newObj;
 };
+exports.getMe = (req, res, next) => {
+  req.params.id = req.user.id;
 
-exports.getAllUsers = asyncCatch(async (req, res, next) => {
-  const users = await User.find();
-  res.status(201).json({
-    status: 'success',
-    users,
-  });
-});
-
-//   (exports.getUser = (req, res) => {
-//     res.status(500).json({
-//       status: 'error',
-//       data: 'Users are not defined yet',
-//     });
-//   }));
-
-exports.filteredBody = (req, res, next) => {
-  filteredObject(req.body, 'name', 'email');
   next();
 };
+exports.getAllUsers = getAll(User);
+exports.getUser = getOne(User);
 
 exports.updateUser = asyncCatch(async (req, res, next) => {
+  // Throw error if user wants to update passwords
+  if (req.body.password || req.body.passwordConfirm) {
+    return next(
+      new APIErrors(
+        'This route is not for update passwords.Please use /updateMyPassword.',
+        400,
+      ),
+    );
+  }
+
+  const filteredBody = filteredObject(req.body, 'name', 'email');
+
   const user = await User.findByIdAndUpdate(req.user.id, filteredBody, {
     runValidators: true,
     new: true,
@@ -49,7 +49,7 @@ exports.updateUser = asyncCatch(async (req, res, next) => {
   });
 });
 
-exports.deleteUserByItself = asyncCatch(async (req, res) => {
+exports.deleteMe = asyncCatch(async (req, res) => {
   const user = await User.findByIdAndUpdate(req.user.id, { active: false });
   console.log(user);
   res.status(204).json({
@@ -58,4 +58,4 @@ exports.deleteUserByItself = asyncCatch(async (req, res) => {
   });
 });
 exports.updateUser = updateOne(User);
-exports.deleteUserByAdmin = deleteOne(User);
+exports.deleteUser = deleteOne(User);
