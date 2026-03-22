@@ -15,9 +15,9 @@ const app = require('./app');
 
 const db = process.env.REMOTE_DATABASE.replace(
   '<PASSWORD>',
-  process.env.PASSWORD
+  process.env.PASSWORD,
 );
-mongoose.connect(db).then(() => {
+mongoose.connect(db, { dbName: 'Natours' }).then(() => {
   console.log(`connection is successful`);
 });
 // .catch((err) => console.log('Connection Failed', err));

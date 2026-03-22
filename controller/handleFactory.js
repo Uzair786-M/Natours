@@ -65,6 +65,7 @@ exports.getAll = (Model) =>
       .paginate();
 
     //Executing Queries
+    // const doc = await features.query.explain();
     const doc = await features.query;
 
     if (!doc) {
