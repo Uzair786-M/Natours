@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const Tour = require('./tourModel');
 const reviewSchmea = new mongoose.Schema(
   {
     review: { type: String, required: [true, 'There should be one review'] },
@@ -39,4 +39,29 @@ reviewSchmea.pre(/^find/, function (next) {
   });
   next();
 });
+
+reviewSchmea.statics.calcAverageRating = async function (tourId) {
+  const stats = await this.aggregate([
+    {
+      $match: { tour: tourId },
+    },
+    {
+      $group: {
+        _id: '$tour',
+        nRating: { $sum: 1 },
+        avgRating: { $avg: '$rating' },
+      },
+    },
+  ]);
+
+  await Tour.findByIdAndUpdate(tourId, {
+    ratingsAverage: stats[0].avgRating,
+    ratingsQuantity: stats[0].nRating,
+  });
+};
+
+reviewSchmea.post('save', function () {
+  this.constructor.calcAverageRating(this.tour);
+});
+
 module.exports = Review = mongoose.model('Review', reviewSchmea);
