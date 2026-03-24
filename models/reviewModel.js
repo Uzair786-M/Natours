@@ -54,14 +54,36 @@ reviewSchmea.statics.calcAverageRating = async function (tourId) {
     },
   ]);
 
-  await Tour.findByIdAndUpdate(tourId, {
-    ratingsAverage: stats[0].avgRating,
-    ratingsQuantity: stats[0].nRating,
-  });
+  if (stats.length > 0) {
+    await Tour.findByIdAndUpdate(tourId, {
+      ratingsAverage: stats[0].avgRating,
+      ratingsQuantity: stats[0].nRating,
+    });
+  } else {
+    await Tour.findByIdAndUpdate(tourId, {
+      ratingsAverage: 4.5,
+      ratingsQuantity: 0,
+    });
+  }
+  console.log(stats);
 };
 
 reviewSchmea.post('save', function () {
   this.constructor.calcAverageRating(this.tour);
+});
+
+// Update and delete ratings and nRatings
+//findByIdAndUpdate
+//findByIdAndDelete
+
+reviewSchmea.pre(/^findOneAnd/, async function (next) {
+  this.rew = await this.clone().findOne();
+
+  next();
+});
+
+reviewSchmea.post(/^findOneAnd/, async function () {
+  await this.rew.constructor.calcAverageRating(this.rew.tour);
 });
 
 module.exports = Review = mongoose.model('Review', reviewSchmea);
