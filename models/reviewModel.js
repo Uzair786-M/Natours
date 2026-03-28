@@ -25,6 +25,10 @@ const reviewSchmea = new mongoose.Schema(
   },
 );
 
+// Setting compound index to prevent duplicate reviews
+
+reviewSchmea.index({ tour: 1, user: 1 }, { unique: true });
+
 reviewSchmea.pre(/^find/, function (next) {
   // this.populate({
   //   path: 'tour',
