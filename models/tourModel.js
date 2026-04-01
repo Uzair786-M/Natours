@@ -105,7 +105,7 @@ const tourSchema = new mongoose.Schema(
 // Setting indexes for price and averageRatings
 
 tourSchema.index({ price: 1, ratingsAverage: -1 });
-tourSchema.index({ startLocation: '2d' });
+tourSchema.index({ startLocation: '2dsphere' });
 
 tourSchema.virtual('durationInWeeks').get(function () {
   return this.duration / 7;
