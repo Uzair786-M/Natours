@@ -105,6 +105,7 @@ const tourSchema = new mongoose.Schema(
 // Setting indexes for price and averageRatings
 
 tourSchema.index({ price: 1, ratingsAverage: -1 });
+tourSchema.index({ startLocation: '2d' });
 
 tourSchema.virtual('durationInWeeks').get(function () {
   return this.duration / 7;
@@ -131,10 +132,10 @@ tourSchema.pre('/^find/', function (next) {
 
 // Aggregation Middleware
 
-tourSchema.pre('aggregate', function () {
-  this.pipeline().unshift({ $match: { difficulty: 'easy' } });
-  // console.log(this.pipeline());
-});
+// tourSchema.pre('aggregate', function () {
+//   this.pipeline().unshift({ $match: { difficulty: 'easy' } });
+//   // console.log(this.pipeline());
+// });
 
 // tourSchema.pre('save', async function (next) {
 //   const guides = this.guides.map(async (el) => await User.findById(el));

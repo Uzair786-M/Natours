@@ -8,6 +8,7 @@ const {
   tourStats,
   toursSoldPerMonth,
   getToursWithIn,
+  getDistances,
 } = require('./../controller/tourController');
 const { protect, restrictTo } = require('./../controller/AuthController');
 
@@ -37,6 +38,8 @@ router
 router
   .route('/tours-within/:distance/center/:latlan/unit/:unit')
   .get(getToursWithIn);
+
+router.route('/distances/:latlng/unit/:unit').get(getDistances);
 
 router
   .route('/')
