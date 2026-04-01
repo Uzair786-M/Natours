@@ -107,3 +107,24 @@ exports.toursSoldPerMonth = asyncCatch(async (req, res) => {
   //   });
   // }
 });
+
+exports.getToursWithIn = asyncCatch(async (req, res, next) => {
+  const { distance, latlng, unit } = req.params;
+  const [lat, lng] = latlng.split(',');
+
+  const radius = unit === 'mi' ? distance / 3963.2 : distance / 6378.1;
+
+  if (!lat || !lng) {
+    next('Please provide latitude and longitude in format of lat,lng', 400);
+  }
+
+  const toursInDistance = await Tour.find({
+    startLocation: { $geoWithin: { $centerSphere: [[lng, lat], radius] } },
+  });
+
+  res.status(200).json({
+    status: 'success',
+    result: toursInDistance.length,
+    tours: toursInDistance,
+  });
+});

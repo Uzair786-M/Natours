@@ -7,6 +7,7 @@ const {
   createTour,
   tourStats,
   toursSoldPerMonth,
+  getToursWithIn,
 } = require('./../controller/tourController');
 const { protect, restrictTo } = require('./../controller/AuthController');
 
@@ -32,6 +33,10 @@ router.route('/stats').get(tourStats);
 router
   .route('/toursSoldPermonth/:year')
   .get(protect, restrictTo('admin', 'lead-guide', 'guide'), toursSoldPerMonth);
+
+router
+  .route('/tours-within/:distance/center/:latlan/unit/:unit')
+  .get(getToursWithIn);
 
 router
   .route('/')
