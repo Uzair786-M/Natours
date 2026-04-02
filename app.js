@@ -19,7 +19,7 @@ const app = express();
 
 app.set('view engine', 'pug');
 // pointing pug engine to views folder
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'Views'));
 
 // Serving static files
 
