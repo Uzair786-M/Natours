@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const tourRouter = require('./Routes/tourRouter');
 const usersRouter = require('./Routes/usersRouter');
 const reviewsRouter = require('./Routes/reviewRouter');
@@ -13,6 +14,16 @@ const XSS = require('xss-clean');
 const hpp = require('hpp');
 
 const app = express();
+
+//setting up pug engine
+
+app.set('view engine', 'pug');
+// pointing pug engine to views folder
+app.set('views', path.join(__dirname, 'views'));
+
+// Serving static files
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 // set HTTP security headers
 app.use(helmet());
@@ -55,10 +66,6 @@ app.use(
   }),
 );
 
-// Serving static files
-
-app.use(express.static(`${__dirname}/public`));
-
 app.use((req, res, next) => {
   // console.log('Hello from middleware');
   req.requestTime = new Date().toISOString();
@@ -66,6 +73,12 @@ app.use((req, res, next) => {
 });
 
 /// App routes
+
+// Pug tempelate Routes
+
+app.get('/', (req, res) => {
+  res.status(200).render('base');
+});
 
 // Tour Routes
 
