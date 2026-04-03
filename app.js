@@ -3,6 +3,7 @@ const path = require('path');
 const tourRouter = require('./Routes/tourRouter');
 const usersRouter = require('./Routes/usersRouter');
 const reviewsRouter = require('./Routes/reviewRouter');
+const viewRouter = require('./Routes/viewsRouter');
 const morgan = require('morgan');
 // console.log(process.env.NODE_ENV === 'development');
 const APIErrors = require('./Utils/apiErrors');
@@ -76,9 +77,13 @@ app.use((req, res, next) => {
 
 // Pug tempelate Routes
 
-app.get('/', (req, res) => {
-  res.status(200).render('base');
-});
+// app.get('/', (req, res) => {
+//   res.status(200).render('base');
+// });
+
+// View Route
+
+app.use('/', viewRouter);
 
 // Tour Routes
 
