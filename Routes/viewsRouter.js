@@ -1,9 +1,15 @@
 const express = require('express');
-const { getOverview, getTour } = require('./../controller/viewController');
+const {
+  getOverview,
+  getTour,
+  getLoginForm,
+} = require('./../controller/viewController');
+const { protect } = require('./../controller/AuthController');
 
 const router = express.Router();
 
 router.get('/', getOverview);
-router.get('/tour', getTour);
+router.get('/tour/:slug', protect, getTour);
+router.get('/login', getLoginForm);
 
 module.exports = router;
