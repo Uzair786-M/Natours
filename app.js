@@ -13,6 +13,7 @@ const helmet = require('helmet');
 const NoSQLQueryInjectionAttack = require('express-mongo-sanitize');
 const XSS = require('xss-clean');
 const hpp = require('hpp');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 
@@ -27,7 +28,17 @@ app.set('views', path.join(__dirname, 'Views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // set HTTP security headers
-app.use(helmet());
+// app.use(
+//   helmet({
+//     contentSecurityPolicy: {
+//       directives: {
+//         defaultSrc: ["'self'"],
+//         scriptSrc: ["'self'", 'https://cdn.jsdelivr.net', "'unsafe-inline'"],
+//         scriptSrcElem: ["'self'", 'https://cdn.jsdelivr.net'],
+//       },
+//     },
+//   }),
+// );
 // Development logging middleware
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
@@ -35,6 +46,7 @@ if (process.env.NODE_ENV === 'development') {
 
 // body parser middleware,read document from body into req.body
 app.use(express.json({ limit: '10kb' }));
+app.use(cookieParser());
 
 // Data sanitization middleware to prevent NoSQL query injection attack
 
@@ -46,7 +58,7 @@ app.use(XSS());
 
 // rate limit middleware (limit request from one IP to protect again guessing password or emails attack)
 const rateLimitObject = {
-  max: 100,
+  max: 300,
   windowMs: 60 * 60 * 1000,
   message: 'To many request from this IP,try again later!',
 };
@@ -68,7 +80,7 @@ app.use(
 );
 
 app.use((req, res, next) => {
-  // console.log('Hello from middleware');
+  console.log(req.cookies);
   req.requestTime = new Date().toISOString();
   next();
 });

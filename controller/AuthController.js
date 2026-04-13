@@ -23,6 +23,7 @@ const createSendToken = (user, statusCode, res) => {
     httpOnly: true,
   };
   if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
+
   res.cookie('jwt', token, cookieOptions);
 
   res.status(statusCode).json({
@@ -48,6 +49,7 @@ exports.createUsers = asyncCatch(async (req, res, next) => {
 });
 
 exports.protect = asyncCatch(async (req, res, next) => {
+  console.log(req.cookies);
   let token;
   // console.log(req.headers.authorization);
   // 1) Getting token and checking whether it exist
@@ -56,6 +58,8 @@ exports.protect = asyncCatch(async (req, res, next) => {
     req.headers.authorization.startsWith('Bearer')
   ) {
     token = req.headers.authorization.split(' ')[1];
+  } else if (req.cookies.jwt) {
+    token = req.cookies.jwt;
   }
 
   // 2) If no token exists,sending error in response
