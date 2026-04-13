@@ -1,4 +1,5 @@
 const Tour = require('./../models/tourModel');
+const APIErrors = require('./../Utils/apiErrors');
 
 exports.getOverview = async (req, res) => {
   //1) Get all tours from database
@@ -13,9 +14,26 @@ exports.getOverview = async (req, res) => {
   });
 };
 
-exports.getTour = (req, res) => {
+exports.getTour = async (req, res) => {
+  const tour = await Tour.findOne({ slug: req.params.slug })
+    .populate({
+      path: 'reviews',
+      fields: 'review ratings user',
+    })
+    .populate({ path: 'guides' });
+
+  if (!tour) {
+    return next(new AppError('There is no tour with that name.', 404));
+  }
+
   res.status(200).render('tour', {
-    title: 'The Forest Hiker',
-    tour: 'This is page of tour',
+    title: `${tour.name} Tour`,
+    tour,
+  });
+};
+
+exports.getLoginForm = async (req, res) => {
+  res.status(200).render('login', {
+    title: 'Login in to your account',
   });
 };
