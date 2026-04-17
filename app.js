@@ -5,7 +5,7 @@ const usersRouter = require('./Routes/usersRouter');
 const reviewsRouter = require('./Routes/reviewRouter');
 const viewRouter = require('./Routes/viewsRouter');
 const morgan = require('morgan');
-// console.log(process.env.NODE_ENV === 'development');
+
 const APIErrors = require('./Utils/apiErrors');
 const globalError = require('./controller/errorController');
 const rateLimit = require('express-rate-limit');
@@ -80,7 +80,6 @@ app.use(
 );
 
 app.use((req, res, next) => {
-  console.log(req.cookies);
   req.requestTime = new Date().toISOString();
   next();
 });

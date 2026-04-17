@@ -15,14 +15,15 @@ const {
 
   getMe,
 } = require('./../controller/userController');
-const { login } = require('../controller/loginController');
+const { login, logout } = require('../controller/login-logout-Controller');
 
 const express = require('express');
 
 const router = express.Router();
 
 router.route('/Signup').post(createUsers);
-router.route('/Login').post(login);
+router.route('/login').post(login);
+router.route('/logout').get(logout);
 router.route('/forgotPassword').post(forgotPassword);
 router.route('/resetPassword/:token').patch(resetPassword);
 

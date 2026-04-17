@@ -714,19 +714,22 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"f2QDv":[function(require,module,exports,__globalThis) {
-var _login = require("./login");
+var _loginLogout = require("./login-logout");
 const loginForm = document.querySelector('.form');
+const logOutBtn = document.querySelector('.nav__el--logout');
 if (loginForm) loginForm.addEventListener('submit', (e)=>{
     e.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    (0, _login.login)(email, password);
+    (0, _loginLogout.login)(email, password);
 });
+if (logOutBtn) logOutBtn.addEventListener('click', (0, _loginLogout.logout));
 
-},{"./login":"7yHem"}],"7yHem":[function(require,module,exports,__globalThis) {
+},{"./login-logout":"9vZAR"}],"9vZAR":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "login", ()=>login);
+parcelHelpers.export(exports, "logout", ()=>logout);
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _alert = require("./alert");
@@ -750,8 +753,22 @@ const login = async (email, password)=>{
         alert('error', err.response.data.message);
     }
 };
+const logout = async ()=>{
+    try {
+        console.log('logout is called');
+        const res = await (0, _axiosDefault.default)({
+            method: 'GET',
+            url: 'http://127.0.0.1:3000/api/v1/users/logout'
+        });
+        res.data.status = 'success';
+        location.reload(true);
+    } catch (err) {
+        console.log(err.response);
+        (0, _alert.showAlert)('error', 'Error logging out! Try again.');
+    }
+};
 
-},{"axios":"jo6P5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./alert":"kxdiQ"}],"jo6P5":[function(require,module,exports,__globalThis) {
+},{"axios":"jo6P5","./alert":"kxdiQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jo6P5":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>(0, _axiosJsDefault.default));

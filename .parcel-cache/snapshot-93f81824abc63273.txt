@@ -21,7 +21,7 @@
 115C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\public\img\users\user-18.jpg134020782523294984 0
 127C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\mongoose\types\helpers.d.ts134060152194946992 0
 128C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\sparse-bitfield\package.json134060151984463332 0
-97C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\controller134196732843799435 1
+97C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\controller134209013193173791 1
 146C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\caniuse-lite\data\features\css-font-palette.js134208805182945431 0
 112C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\public\img\logo-white.png134020782519064982 0
 126C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\mpath\lib\stringToParts.js134060151992433353 0
@@ -30,7 +30,7 @@
 122C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\@swc\counter\README.md134208804972413937 0
 152C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\mongoose\lib\helpers\discriminator\getConstructor.js134060152144246401 0
 107C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\mongodb134060152202412016 1
-93C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\app.js134208816821546280 0
+93C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\app.js134209023046451954 0
 120C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\promise\setimmediate134196087534472376 1
 167C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\@parcel\core\test\fixtures\targets-default-distdir-one\package.json134208805188785440 0
 114C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\clone\clone.js134208804990393967 0
@@ -153,7 +153,7 @@
 132C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\@parcel\utils\src\getExisting.js134208805069215451 0
 129C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\object-inspect\test\number.js134042283320372949 0
 125C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\character-parser\index.js134196087512352366 0
-104C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\Views\_header.pug134205826056063627 0
+104C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\Views\_header.pug134209128294632870 0
 117C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\raw-body\index.js134042283257903027 0
 121C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\lodash\fp\truncate.js134173775744635250 0
 134C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\@parcel\workers\test\workerfarm.js134208805114245439 0
@@ -182,6 +182,14 @@
 133C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\axios\lib\helpers\isAxiosError.js134208959983931523 0
 114C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\public\img\users\user-2.jpg134020782523334960 0
 126C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\math-intrinsics\isNaN.d.ts134042283318750472 0
+146C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\mongoose\lib\helpers\document\applyVirtuals.js134060152048455060 0
+132C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\type-fest\source\promisable.d.ts134208805071955447 0
+143C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\lmdb\node_modules\node-addon-api\LICENSE.md134208805051927004 0
+131C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\@parcel\codeframe\test\fixtures134208804970763980 1
+160C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\caniuse-lite\data\features\keyboardevent-getmodifierstate.js134208805246176422 0
+131C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\whatwg-url\webidl2js-wrapper.js134060152003288789 0
+112C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\public\js\login-logout.js134209120954644774 0
+126C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\resolve\test\resolver\quux134196087539242368 1
 131C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\caniuse-lite\data\regions\SE.js134208805263826407 0
 105C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\Utils\apiErrors.js134100330536767541 0
 119C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\lodash\fp\dissoc.js134173775710355282 0
@@ -221,13 +229,8 @@
 137C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\@parcel\core\lib\public\Dependency.js134208805124125442 0
 131C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\caniuse-lite\data\regions\LC.js134208805247106411 0
 145C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\Notes\Error Handling\Lec 122-Catching Unhandled Rejections134102761892895744 0
-108C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\Routes\usersRouter.js134185921857931397 0
+108C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\Routes\usersRouter.js134209054864306996 0
 103C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\public\tour.html134020782523584943 0
-119C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\es-errors\syntax.js134042283255753324 0
-105C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\public\js\login.js134208965829633350 0
-114C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\mongoose\types134060152196360547 1
-117C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\vary\package.json134042283266007669 0
-136C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\get-proto\Object.getPrototypeOf.d.ts134042283302418103 0
 115C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\controller\viewController.js134204942755252035 0
 97C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\public\css134020782518904975 1
 121C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\resolve\test\resolver134196087545932370 1
@@ -241,7 +244,7 @@
 104C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\sift134060152023297878 1
 117C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\mongodb\lib\db.js134060152079183389 0
 118C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\type-is\HISTORY.md134042283270072411 0
-96C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\public\js134208967184136692 1
+96C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\public\js134209121124602251 1
 117C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\mime\CHANGELOG.md134042283288636593 0
 127C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\lodash\_baseIntersection.js134173775682825273 0
 143C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\caniuse-lite\data\features\css-scrollbar.js134208805200335500 0
@@ -254,15 +257,15 @@
 116C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\follow-redirects134208959971281537 1
 105C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\public\js\alert.js134208963989321603 0
 115C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\lodash\minBy.js134173775734695292 0
-106C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\public\js\bundle.js134208967183956702 0
+106C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\public\js\bundle.js134209121124482378 0
 129C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\mongoose\lib\schema\number.js134060152178757100 0
 150C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\@swc\helpers\esm\_class_private_field_loose_key.js134208805189995459 0
 132C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\nodemailer\lib\punycode\index.js134165865095117280 0
 127C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\semver\functions\compare.js134108023738639413 0
-110C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\public\js\bundle.js.map134208967184106711 0
+110C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\public\js\bundle.js.map134209121124582342 0
 120C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\has-symbols\shams.js134042283257216328 0
 130C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\object-inspect\test\inspect.js134042283318856907 0
-105C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\public\js\index.js134208966459926529 0
+105C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\public\js\index.js134209120162887197 0
 114C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\public\img\users\user-6.jpg134020782523414952 0
 114C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\dotenv\LICENSE134059614496176340 0
 120C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\term-size\index.d.ts134208805034147021 0
@@ -1685,13 +1688,6 @@
 120C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\whatwg-url\README.md134060152004130495 0
 122C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\function-bind\index.js134042283253916253 0
 133C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\postcss-value-parser\lib\index.js134208804969843940 0
-146C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\mongoose\lib\helpers\document\applyVirtuals.js134060152048455060 0
-132C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\type-fest\source\promisable.d.ts134208805071955447 0
-143C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\lmdb\node_modules\node-addon-api\LICENSE.md134208805051927004 0
-131C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\@parcel\codeframe\test\fixtures134208804970763980 1
-160C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\caniuse-lite\data\features\keyboardevent-getmodifierstate.js134208805246176422 0
-131C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\whatwg-url\webidl2js-wrapper.js134060152003288789 0
-126C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\resolve\test\resolver\quux134196087539242368 1
 118C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\doctypes\README.md134196087506652346 0
 121C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\side-channel-map\test134042283253916253 1
 134C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\@parcel\packager-js\lib\helpers.js134208805044416990 0
@@ -1771,6 +1767,9 @@
 162C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\mongoose\lib\helpers\discriminator\mergeDiscriminatorSchema.js134060152175197046 0
 167C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\@parcel\package-manager\test\fixtures\has-foo\node_modules\index.js134208805033116991 0
 112C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\vary\LICENSE134042283275732152 0
+114C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\mongoose\types134060152196360547 1
+117C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\vary\package.json134042283266007669 0
+136C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\get-proto\Object.getPrototypeOf.d.ts134042283302418103 0
 134C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\@swc\helpers\_\_is_native_function134208805129965474 1
 115C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\resolve\.github134196087547612366 1
 130C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\mongoose\types\collection.d.ts134060152194436999 0
@@ -4061,7 +4060,7 @@
 122C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\lodash\_baseFlatten.js134173775682135328 0
 126C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\lodash\fp\takeLastWhile.js134173775742365288 0
 132C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\mongodb\lib\gridfs\upload.js.map134060152189596986 0
-115C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\controller\AuthController.js134205839110095975 0
+115C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\controller\AuthController.js134208976108654421 0
 121C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\lodash\_isMaskable.js134173775700425287 0
 137C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\mongodb\lib\cursor\abstract_cursor.js134060151986763353 0
 116C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\lodash\before.js134173775705755317 0
@@ -5725,6 +5724,7 @@
 120C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\es-errors\range.d.ts134042283280560358 0
 118C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\es-errors\range.js134042283254076222 0
 121C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\es-errors\syntax.d.ts134042283286302263 0
+119C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\es-errors\syntax.js134042283255753324 0
 114C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\es-errors\test134042283252956232 1
 123C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\es-errors\tsconfig.json134042283259748955 0
 159C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\node_modules\caniuse-lite\data\features\mdn-text-decoration-shorthand.js134208805249196402 0
@@ -7931,6 +7931,6 @@
 118C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\dev-data\data\tours-simple.json134064757388232212 0
 116C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\controller\errorController.js134102072462422367 0
 114C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\controller\handleFactory.js134186355244520285 0
-116C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\controller\loginController.js134204935408579001 0
+124C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\controller\login-logout-Controller.js134209129613184231 0
 115C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\controller\tourController.js134195447417071974 0
 115C:\Users\Uzair Maqbool\Desktop\Node Js Course\complete-node-bootcamp\4-natours\starter\controller\userController.js134185922207208163 0
