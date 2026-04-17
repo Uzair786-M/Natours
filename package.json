@@ -2,16 +2,26 @@
   "name": "natours-app",
   "version": "1.0.0",
   "description": "Learning Node,Express and mongoDB",
+  "source": "public/js/index.js",
   "main": "app.js",
+  "frontend": "public/js/bundle.js",
+  "targets": {
+    "frontend": {
+      "distDir": "public/js",
+      "publicUrl": "/js"
+    }
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:dev": "set NODE_ENV=development&&nodemon server.js",
     "start:prod": "set NODE_ENV=production&&nodemon server.js",
-    "debug": "ndb server.js"
+    "debug": "ndb server.js",
+    "watch:js": "parcel watch public/js/index.js --target frontend"
   },
   "author": "Uzair Maqbool",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.15.0",
     "bcryptjs": "^3.0.3",
     "cookie-parser": "^1.4.7",
     "dotenv": "^17.2.3",
@@ -29,6 +39,7 @@
     "xss-clean": "^0.1.4"
   },
   "devDependencies": {
-    "cross-env": "^10.1.0"
+    "cross-env": "^10.1.0",
+    "parcel": "^2.16.4"
   }
 }
