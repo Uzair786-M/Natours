@@ -90,6 +90,40 @@ exports.protect = asyncCatch(async (req, res, next) => {
   next();
 });
 
+// Only for rendered pages.No errors!
+
+exports.isLoggedIn = async (req, res, next) => {
+  if (req.cookies.jwt) {
+    try {
+      // 1)  Verify token/decoding token
+
+      const decoded = jwt.verify(req.cookies.jwt, process.env.JWT_SECRET);
+
+      // 4) Verify User still exists/Not deleted by Admin after token issuance
+
+      const currentUser = await User.findById(decoded.id);
+
+      if (!currentUser) {
+        return next();
+      }
+
+      // 5) Verify password is not changed after issuance of token
+
+      if (currentUser.changedPasswordAfter(decoded.iat)) {
+        return next();
+      }
+
+      // 5) Grant Access
+      res.locals.user = currentUser;
+
+      return next();
+    } catch (err) {
+      return next();
+    }
+  }
+  next();
+};
+
 exports.restrictTo = function (...roles) {
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {
