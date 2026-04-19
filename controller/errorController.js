@@ -20,37 +20,82 @@ const handleValidationErrorDB = (err) => {
   return new APIErrors(message, 400);
 };
 
-const sendErrorProduction = (err, res) => {
-  if (err.isOperational) {
-    res.status(err.statusCode).json({
-      status: err.status,
-      message: err.message,
-    });
-  } else {
-    // Log error
-    console.error('Error 🔥', err);
-    // Generic response to client
-    res.status(500).json({
-      status: 'internal server error',
-      message: 'Something went wrong',
+const sendErrorProduction = (err, req, res) => {
+  // A) API
+  if (req.originalUrl.startsWith('/api')) {
+    // A) Operational, trusted error: send message to client
+    if (err.isOperational) {
+      return res.status(err.statusCode).json({
+        status: err.status,
+        message: err.message,
+      });
+    }
+    // B) Programming or other unknown error: don't leak error details
+    // 1) Log error
+    console.error('ERROR 💥', err);
+    // 2) Send generic message
+    return res.status(500).json({
+      status: 'error',
+      message: 'Something went very wrong!',
     });
   }
+
+  // B) RENDERED WEBSITE
+  // A) Operational, trusted error: send message to client
+  if (err.isOperational) {
+    console.log(err);
+    return res.status(err.statusCode).render('error', {
+      title: 'Something went wrong!',
+      msg: err.message,
+    });
+  }
+  // B) Programming or other unknown error: don't leak error details
+  // 1) Log error
+  console.error('ERROR 💥', err);
+  // 2) Send generic message
+  return res.status(err.statusCode).render('error', {
+    title: 'Something went wrong!',
+    msg: 'Please try again later.',
+  });
 };
 
-const sendErrorDev = (err, res) => {
-  // Manually setting status and statusCode because Validation errors comes from mongoose and they don't know about those properties.
-  // If errors are not coming from our APIError class so we have to manually set them like this.
-  err.status = err.status || 'internal server error';
-  err.statusCode = err.statusCode || 500;
-  res.status(err.statusCode).json({
-    status: err.status,
-    error: err,
-    message: err.message,
-    stack: err.stack,
+// const sendErrorDev = (err, res) => {
+//   // Manually setting status and statusCode because Validation errors comes from mongoose and they don't know about those properties.
+//   // If errors are not coming from our APIError class so we have to manually set them like this.
+//   err.status = err.status || 'internal server error';
+//   err.statusCode = err.statusCode || 500;
+//   res.status(err.statusCode).json({
+//     status: err.status,
+//     error: err,
+//     message: err.message,
+//     stack: err.stack,
+//   });
+// };
+
+const sendErrorDev = (err, req, res) => {
+  // A) API errors
+  if (req.originalUrl.startsWith('/api')) {
+    return res.status(err.statusCode).json({
+      status: err.status,
+      error: err,
+      message: err.message,
+      stack: err.stack,
+    });
+  }
+
+  // B) Errors from frontend (Rendered pages errors)
+  console.log('Error', err);
+  return res.status(err.statusCode).render('error', {
+    title: 'Some thing went wrong',
+    msg: err.message,
   });
 };
 
 module.exports = (err, req, res, next) => {
+  // Manually setting status and statusCode because Validation errors comes from mongoose and they don't know about those properties.
+  // If errors are not coming from our APIError class so we have to manually set them like this.
+  err.statusCode = err.statusCode || 500;
+  err.status = err.status || 'error';
   if (process.env.NODE_ENV === 'production') {
     let error = Object.assign(err);
 
@@ -60,8 +105,8 @@ module.exports = (err, req, res, next) => {
     if (error.name === 'ValidationError')
       error = handleValidationErrorDB(error);
 
-    sendErrorProduction(error, res);
+    sendErrorProduction(error, req, res);
   } else if (process.env.NODE_ENV === 'development') {
-    sendErrorDev(err, res);
+    sendErrorDev(err, req, res);
   }
 };
