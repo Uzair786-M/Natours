@@ -37,3 +37,9 @@ exports.getLoginForm = async (req, res) => {
     title: 'Login in to your account',
   });
 };
+
+exports.getAccount = (req, res) => {
+  res.status(200).render('account', {
+    title: 'Your account',
+  });
+};

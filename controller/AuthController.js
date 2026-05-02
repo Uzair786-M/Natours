@@ -49,7 +49,6 @@ exports.createUsers = asyncCatch(async (req, res, next) => {
 });
 
 exports.protect = asyncCatch(async (req, res, next) => {
-  console.log(req.cookies);
   let token;
   // console.log(req.headers.authorization);
   // 1) Getting token and checking whether it exist
@@ -86,7 +85,7 @@ exports.protect = asyncCatch(async (req, res, next) => {
 
   // 5) Grant Access
   req.user = currentUser;
-
+  res.locals.user = currentUser;
   next();
 });
 
