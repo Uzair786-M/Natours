@@ -25,7 +25,7 @@ exports.getMe = (req, res, next) => {
 exports.getAllUsers = getAll(User);
 exports.getUser = getOne(User);
 
-exports.updateUser = asyncCatch(async (req, res, next) => {
+exports.updateMe = asyncCatch(async (req, res, next) => {
   // Throw error if user wants to update passwords
   if (req.body.password || req.body.passwordConfirm) {
     return next(

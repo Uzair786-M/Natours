@@ -9,7 +9,7 @@ const {
 const {
   getAllUsers,
   getUser,
-  updateUser,
+  updateMe,
   deleteMe,
   deleteUser,
 
@@ -33,7 +33,7 @@ router.use(protect);
 
 // Get login user/myself
 router.route('/me').get(getMe, getUser);
-router.route('/updateMe/:id').patch(updateUser);
+router.route('/updateMe').patch(updateMe);
 router.route('/updateMyPassword').patch(updateMyPassword);
 router.route('/deleteMe').patch(deleteMe);
 

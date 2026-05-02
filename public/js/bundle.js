@@ -715,8 +715,10 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 
 },{}],"f2QDv":[function(require,module,exports,__globalThis) {
 var _loginLogout = require("./login-logout");
-const loginForm = document.querySelector('.form');
+var _updateSettings = require("./updateSettings");
+const loginForm = document.querySelector('.login-form');
 const logOutBtn = document.querySelector('.nav__el--logout');
+const updateDataForm = document.querySelector('.form-user-data');
 if (loginForm) loginForm.addEventListener('submit', (e)=>{
     e.preventDefault();
     const email = document.getElementById('email').value;
@@ -724,8 +726,14 @@ if (loginForm) loginForm.addEventListener('submit', (e)=>{
     (0, _loginLogout.login)(email, password);
 });
 if (logOutBtn) logOutBtn.addEventListener('click', (0, _loginLogout.logout));
+if (updateDataForm) updateDataForm.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    (0, _updateSettings.updateData)(name, email);
+});
 
-},{"./login-logout":"9vZAR"}],"9vZAR":[function(require,module,exports,__globalThis) {
+},{"./login-logout":"9vZAR","./updateSettings":"l3cGY"}],"9vZAR":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "login", ()=>login);
@@ -5639,6 +5647,29 @@ const showAlert = (type, msg)=>{
     window.setTimeout(hideAlert, 5000);
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["fWcLA","f2QDv"], "f2QDv", "parcelRequireda5e", {})
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"l3cGY":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "updateData", ()=>updateData);
+var _axios = require("axios");
+var _axiosDefault = parcelHelpers.interopDefault(_axios);
+var _alert = require("./alert");
+const updateData = async (name, email)=>{
+    try {
+        const res = await (0, _axiosDefault.default)({
+            method: 'PATCH',
+            url: 'http://127.0.0.1:3000/api/v1/users/updateMe',
+            data: {
+                name,
+                email
+            }
+        });
+        if (res.data.status === 'success') (0, _alert.showAlert)('success', 'Data updated successfully');
+    } catch (err) {
+        (0, _alert.showAlert)('error', err.response.data.message);
+    }
+};
+
+},{"axios":"jo6P5","./alert":"kxdiQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["fWcLA","f2QDv"], "f2QDv", "parcelRequireda5e", {})
 
 //# sourceMappingURL=bundle.js.map
